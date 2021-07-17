@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Theme3_white"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/verification_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="H,0.55"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/verification_screen"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <LinearLayout
+               android:id="@+id/sign_up_screen"
+               android:visibility="visible"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+
+                   <androidx.constraintlayout.widget.ConstraintLayout
+                       android:id="@+id/clMain"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+
+                       <ImageView
+                           android:id="@+id/back_icon"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginStart="@dimen/toolbar_margin_left"
+                           android:background="@null"
+                           android:elevation="@dimen/_1sdp"
+                           android:paddingTop="5dp"
+                           android:paddingBottom="5dp"
+                           android:scaleType="fitStart"
+                           android:layout_marginTop="@dimen/_15sdp"
+                           android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintHorizontal_bias="0.02"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toTopOf="parent"
+                           app:layout_constraintVertical_bias="0.05" />
+
+                       <ImageView
+                           android:layout_width="0dp"
+                           android:layout_height="0dp"
+                           android:scaleType="fitXY"
+                           android:src="@drawable/theme3_ic_background"
+                           app:layout_constraintDimensionRatio="H,0.55"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toTopOf="parent" />
+                   </androidx.constraintlayout.widget.ConstraintLayout>
+
+                   <ImageView
+                       android:layout_width="@dimen/_50sdp"
+                       android:layout_height="@dimen/_50sdp"
+                       android:layout_below="@id/clMain"
+                       android:layout_alignParentEnd="true"
+                       android:layout_marginTop="@dimen/_minus35sdp"
+                       android:layout_marginEnd="@dimen/_40sdp"
+                       android:src="@mipmap/ic_launcher" />
+
+                   <LinearLayout
+                       android:id="@+id/llMain"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="@dimen/Theme3_spacing_standard_new"
+                       android:layout_marginTop="@dimen/_60sdp"
+                       android:orientation="vertical">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="@string/theme3_lbl_create_account"
+                           android:textAppearance="@style/Theme3FontSemiBold"
+                           android:textColor="@color/Theme3_white"
+                           android:textSize="32sp" />
+                   </LinearLayout>
+
+               </RelativeLayout>
+
+               <EditText
+                   android:id="@+id/ed_fname"
+                   style="@style/Theme3EditTextStyle_rounded"
+                   android:layout_marginTop="20dp"
+                   android:hint="@string/first_name"
+                   android:textColorHint="@color/dark_gray" />
+
+               <EditText
+                   android:id="@+id/ed_lname"
+                   style="@style/Theme3EditTextStyle_rounded"
+                   android:layout_marginTop="20dp"
+                   android:hint="Last Name"
+                   android:textColorHint="@color/dark_gray" />
+
+               <EditText
+                   android:id="@+id/ed_email"
+                   style="@style/Theme3EditTextStyle_rounded"
+                   android:layout_marginTop="20dp"
+                   android:hint="@string/theme3_hint_Email"
+                   android:textColorHint="@color/dark_gray" />
+
+               <EditText
+                   android:id="@+id/ed_password"
+                   style="@style/Theme3EditTextStyle_rounded"
+                   android:layout_marginTop="20dp"
+                   android:hint="@string/theme3_hint_password"
+                   android:inputType="textPassword"
+                   android:textColorHint="@color/dark_gray" />
+
+               <TextView
+                   android:id="@+id/btn_signup"
+                   style="@style/Theme3MaterialButton"
+                   android:layout_marginTop="20dp"
+                   android:elevation="@dimen/Theme3_spacing_middle"
+                   android:gravity="center_horizontal"
+                   android:shadowColor="@color/Theme3_colorPrimary"
+                   android:text="@string/theme3_lbl_sign_up"
+                   android:textAppearance="@style/Theme3FontSemiBold" />
+
+           </LinearLayout>
+
+           <RelativeLayout
+               android:elevation="5dp"
+               android:id="@+id/transparent_layer"
+               android:layout_width="match_parent"
+               android:layout_height="750dp"
+               android:background="@color/transparent_tint"
+               android:visibility="visible" />
+
+           <RelativeLayout
+               android:id="@+id/progressDialog"
+               android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:layout_centerInParent="true"
+               android:layout_gravity="center"
+               android:background="@drawable/round_shape_dialog_white"
+               android:elevation="30dp"
+               android:visibility="invisible"
+               app:layout_constraintDimensionRatio="H,0.55"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintVertical_bias="0.5">
+
+               <com.gmail.samehadar.iosdialog.CamomileSpinner
+                   android:id="@+id/signUpProgress"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   app:clockwise="true"
+                   app:spinnerColor="@color/colorRed" />
+           </RelativeLayout>
+       </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/Theme3_spacing_standard_new"
+            android:layout_marginTop="@dimen/Theme3_spacing_standard_new"
+            android:layout_marginEnd="@dimen/Theme3_spacing_standard_new"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/Theme3_spacing_middle">
+
+            <ImageView
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/Theme3_spacing_standard_new"
+                android:layout_marginBottom="@dimen/Theme3_spacing_middle"
+                android:layout_weight="1"
+                android:src="@drawable/theme3_ic_sign2" />
+
+            <ImageView
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:src="@drawable/theme3_ic_sign4" />
+
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/Theme3_spacing_large"
+                android:layout_weight="1"
+                android:src="@drawable/theme3_ic_sign3" />
+
+            <ImageView
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_55sdp"
+                android:layout_marginStart="@dimen/_minus16sdp"
+                android:layout_marginTop="@dimen/Theme3_spacing_standard"
+                android:layout_weight="1"
+                android:src="@drawable/theme3_ic_sign1" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

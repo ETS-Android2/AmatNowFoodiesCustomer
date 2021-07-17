@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_255sdp"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tb_spacing_standard_new"
+        >
+
+        <CardView
+            android:id="@+id/cardIvProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/tb_spacing_standard_new"
+            android:padding="@dimen/tb_spacing_control_half"
+            >
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tb_profile"/>
+        </CardView>
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_alignTop="@id/cardIvProfile"
+            android:layout_alignBottom="@id/cardIvProfile"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_toEndOf="@id/cardIvProfile"
+            android:textColor="@color/tb_textColorPrimary"
+            android:textAppearance="@style/TBFontSemiBold"
+            android:textSize="@dimen/tb_font_size_large"
+            android:text="@string/tb_user_name" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/cardIvProfile"
+            android:layout_marginStart="@dimen/tb_spacing_standard_new"
+            android:layout_marginEnd="@dimen/tb_spacing_standard_new"
+            android:background="@color/tb_view_color"/>
+
+        <LinearLayout
+            android:id="@+id/llUserAccount"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardIvProfile"
+            android:layout_marginTop="@dimen/tb_spacing_standard_new"
+            android:layout_marginStart="@dimen/tb_spacing_standard_new"
+            android:layout_marginEnd="@dimen/tb_spacing_standard_new">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/tb_textColorSecondary"
+                android:textSize="@dimen/tb_font_size_medium"
+                android:text="Do more with your account" />
+            <TextView
+                android:id="@+id/tvMakeMoneyDriving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAppearance="@style/TBFontSemiBold"
+                android:layout_marginTop="@dimen/tb_spacing_control"
+                android:textColor="@color/tb_colorPrimary"
+                android:textSize="@dimen/tb_font_size_medium"
+                android:text="@string/tb_make_money_driving" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        tools:ignore="MissingPrefix,UnusedAttribute">
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

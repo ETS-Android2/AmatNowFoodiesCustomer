@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:id="@+id/confirmation_main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@color/colorPrimaryDark">
+
+            <ImageView
+                android:id="@+id/back_icon_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/toolbar_margin_left"
+                android:paddingTop="5dp"
+                android:paddingEnd="50dp"
+                android:paddingBottom="5dp"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/back_icon" />
+
+            <TextView
+                android:id="@+id/confirmation_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/confirm"
+                android:textColor="@color/bg_top_color"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/sms" />
+
+            <TextView
+                android:id="@+id/sms_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/sms_desc"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/enter_code"
+                android:textColor="@color/colorBlack"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp"
+            android:weightSum="4">
+
+
+            <EditText
+                android:id="@+id/edit_text1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.02"
+                android:background="@drawable/edit_text_bg"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="12dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/color_light_black"
+                android:textSize="45dp"
+                android:textStyle="bold" />
+
+            <requestFocus />
+
+            <EditText
+                android:id="@+id/edit_text2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_bg"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="12dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/color_light_black"
+                android:textSize="45dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edit_text3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_bg"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="12dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/color_light_black"
+                android:textSize="45dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edit_text4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_bg"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="12dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/color_light_black"
+                android:textSize="45dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <at.markushi.ui.CircleButton
+                android:id="@+id/confirm_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:padding="30dp"
+                android:src="@drawable/arrow"
+                app:cb_color="@color/colorRed"
+
+                />
+
+            <TextView
+                android:id="@+id/resend_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/resend_code"
+                android:textColor="@color/colorRed"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

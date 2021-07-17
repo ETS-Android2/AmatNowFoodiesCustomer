@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbarSlider"
+        layout="@layout/restaurant_toolbar" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_below="@id/toolbarSlider"
+        android:layout_marginTop="@dimen/Theme4_spacing_standard_new"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingStart="@dimen/Theme4_spacing_standard"
+        android:paddingEnd="@dimen/_20sdp" />
+</RelativeLayout>
