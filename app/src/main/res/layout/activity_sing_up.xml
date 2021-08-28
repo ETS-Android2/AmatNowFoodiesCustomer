@@ -7,7 +7,7 @@
     android:id="@+id/main_sign_up_div"
     android:background="@color/colorBg"
     android:clickable="true"
-    tools:context="com.foodies.amatfoodies.activitiesAndFragments.SingUpActivity">
+    tools:context="com.foodies.amatfoodies.activitiesAndFragments.SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

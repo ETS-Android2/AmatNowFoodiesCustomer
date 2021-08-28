@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home_nav"
+        android:orderInCategory="100"
+        android:title="@string/home_nav_text" />
+    <item
+        android:id="@+id/exploreFragment"
+        android:icon="@drawable/ic_explore_nav"
+        android:orderInCategory="200"
+        android:title="@string/explore_nav_text" />
+    <item
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/ic_favorite_nav"
+        android:orderInCategory="300"
+        android:title="@string/favorites_txt" />
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_shopping_cart_nav"
+        android:orderInCategory="400"
+        android:title="@string/cart_nav_text" />
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/ic_acc_fil"
+        android:orderInCategory="500"
+        android:title="@string/profile_nav_text" />
+</menu>

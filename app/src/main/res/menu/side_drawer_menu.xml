@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sideMenuHome"
+        android:icon="@drawable/ic_home_nav"
+        android:orderInCategory="100"
+        android:title="@string/home_nav_text" />
+    <item
+        android:id="@+id/sideMenuExplore"
+        android:icon="@drawable/ic_explore_nav"
+        android:orderInCategory="200"
+        android:title="@string/explore_nav_text" />
+    <item
+        android:id="@+id/sideMenuAccount"
+        android:icon="@drawable/ic_acc_fil"
+        android:orderInCategory="500"
+        android:title="@string/profile_nav_text" />
+</menu>

@@ -51,7 +51,7 @@
                             android:layout_height="@dimen/_15sdp"
                             android:layout_marginEnd="@dimen/Theme3_spacing_control"
                             android:padding="@dimen/Theme3_spacing_control_half"
-                            android:src="@drawable/theme3_ic_veg"/>
+                            android:src="@drawable/theme__ic_veg"/>
 
                         <TextView
                             android:layout_toEndOf="@id/ivVeg"

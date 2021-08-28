@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="@string/favorites"
+                android:text="@string/favorites_txt"
                 android:id="@+id/title_city_tv"
                 android:textColor="@color/bg_top_color"
                 android:textSize="15sp"/>

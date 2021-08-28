@@ -21,22 +21,21 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.foodies.amatfoodies.R;
+import com.foodies.amatfoodies.constants.AllConstants;
+import com.foodies.amatfoodies.constants.DarkModePrefManager;
+import com.foodies.amatfoodies.constants.GpsUtils;
+import com.foodies.amatfoodies.constants.PreferenceClass;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.foodies.amatfoodies.constants.AllConstants;
-import com.foodies.amatfoodies.constants.DarkModePrefManager;
-import com.foodies.amatfoodies.constants.GpsUtils;
-import com.foodies.amatfoodies.constants.PreferenceClass;
-import com.foodies.amatfoodies.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Enable_location_A extends AppCompatActivity{
-
+public class Enable_location_A extends AppCompatActivity {
 
 
     Button enableLocationBtn;
@@ -48,47 +47,33 @@ public class Enable_location_A extends AppCompatActivity{
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         if (new DarkModePrefManager(this).isNightMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-        }else {
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enable_location);
 
+        sharedPreferences = getSharedPreferences(PreferenceClass.user, MODE_PRIVATE);
+        ;
 
-
-
-        sharedPreferences= getSharedPreferences(PreferenceClass.user, MODE_PRIVATE);;
-
-        enableLocationBtn =findViewById(R.id.enable_location_btn);
-        enableLocationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getLocationPermission();
-
-            }
-        });
-
+        enableLocationBtn = findViewById(R.id.enable_location_btn);
+        enableLocationBtn.setOnClickListener(v -> getLocationPermission());
 
         gpsstatus();
     }
-
-
-
 
 
     private void getLocationPermission() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                        AllConstants.permission_location);
+                    AllConstants.permission_location);
         }
 
     }
@@ -98,8 +83,8 @@ public class Enable_location_A extends AppCompatActivity{
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        switch(requestCode){
-            case   AllConstants.permission_location:
+        switch (requestCode) {
+            case AllConstants.permission_location:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     gpsstatus();
                 } else {
@@ -113,10 +98,10 @@ public class Enable_location_A extends AppCompatActivity{
     }
 
 
-    public void gpsstatus(){
+    public void gpsstatus() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean GpsStatus = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        if(!GpsStatus) {
+        if (!GpsStatus) {
 
             new GpsUtils(Enable_location_A.this).turnGPSOn(new GpsUtils.onGpsListener() {
                 @Override
@@ -126,45 +111,36 @@ public class Enable_location_A extends AppCompatActivity{
             });
 
 
-        }
-        else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             getLocationPermission();
-        }
-        else {
+        } else {
             getCurrentlocation();
         }
     }
-
 
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==2){
+        if (requestCode == 2) {
             gpsstatus();
         }
 
     }
 
 
-
-
-
-
-
-
     private FusedLocationProviderClient mFusedLocationClient;
+
     private void getCurrentlocation() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
 
 
         createLocationRequest();
         startLocationUpdates();
     }
 
-    public void goNext(Location location){
+    public void goNext(Location location) {
 
         if (location != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -172,8 +148,8 @@ public class Enable_location_A extends AppCompatActivity{
             editor.putString(PreferenceClass.u_currentlng, "" + location.getLongitude());
             editor.commit();
 
-           setResult(1);
-           finish();
+            setResult(1);
+            finish();
 
 
         } else {
@@ -194,12 +170,10 @@ public class Enable_location_A extends AppCompatActivity{
     }
 
 
-
     private LocationRequest mLocationRequest;
     private int UPDATE_INTERVAL = 3000;
     private int FATEST_INTERVAL = 3000;
     private int DISPLACEMENT = 0;
-
 
 
     protected void createLocationRequest() {
@@ -212,14 +186,15 @@ public class Enable_location_A extends AppCompatActivity{
 
 
     LocationCallback locationCallback;
+
     protected void startLocationUpdates() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-           return;
+            return;
         }
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        locationCallback= new LocationCallback() {
+        locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 if (locationResult == null) {
@@ -236,15 +211,15 @@ public class Enable_location_A extends AppCompatActivity{
             }
         };
 
-        mFusedLocationClient.requestLocationUpdates(mLocationRequest,locationCallback
+        mFusedLocationClient.requestLocationUpdates(mLocationRequest, locationCallback
                 , Looper.myLooper());
 
     }
 
 
     protected void stopLocationUpdates() {
-        if(mFusedLocationClient!=null && locationCallback!=null)
-        mFusedLocationClient.removeLocationUpdates(locationCallback);
+        if (mFusedLocationClient != null && locationCallback != null)
+            mFusedLocationClient.removeLocationUpdates(locationCallback);
     }
 
 

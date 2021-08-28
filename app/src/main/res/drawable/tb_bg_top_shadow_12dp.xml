@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingDefaultResource">
+
+    <!-- Drop Shadow Stack -->
+    <item>
+        <shape>
+            <padding
+
+                android:top="1.5dp" />
+
+            <solid android:color="#00C0C0C0" />
+
+            <corners android:topLeftRadius="@dimen/_24sdp"
+                android:topRightRadius="@dimen/_24sdp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+
+                android:top="1.5dp" />
+
+            <solid android:color="#05C0C0C0" />
+            <corners android:topLeftRadius="@dimen/_24sdp"
+                android:topRightRadius="@dimen/_24sdp" />
+
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+
+                android:top="1.5dp" />
+            <solid android:color="#0aC0C0C0" />
+            <corners android:topLeftRadius="@dimen/_24sdp"
+                android:topRightRadius="@dimen/_24sdp" />
+
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+
+                android:top="1.5dp" />
+
+            <solid android:color="#0fC0C0C0" />
+
+            <corners android:topLeftRadius="@dimen/_24sdp"
+                android:topRightRadius="@dimen/_24sdp" />
+
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+
+                android:top="1.5dp" />
+
+            <solid android:color="#14C0C0C0" />
+            <corners android:topLeftRadius="@dimen/_24sdp"
+                android:topRightRadius="@dimen/_24sdp" />
+
+        </shape>
+    </item>
+
+    <!-- Background -->
+    <item
+        android:id="@+id/itemShape">
+        <shape>
+            <solid android:color="@color/tb_white" />
+            <corners android:topLeftRadius="@dimen/_24sdp"
+                android:topRightRadius="@dimen/_24sdp"/>
+
+
+        </shape>
+    </item>
+
+</layer-list>

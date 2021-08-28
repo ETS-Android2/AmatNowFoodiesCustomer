@@ -1,0 +1,43 @@
+Password: amatnowcustomer
+
+Alias: amatnowcustomer
+
+
+
+
+Firebase SHA1 for Release Key:
+
+
+
+keytool -list -v -keystore <your keystore path> -alias <your alias>
+
+
+
+Alias name: amatnowcustomer
+
+Creation date: Jun 2, 2021
+
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Jide Owo, OU=AmatNow, O=AmatNow, ST=Istanbul, C=TR
+Issuer: CN=Jide Owo, OU=AmatNow, O=AmatNow, ST=Istanbul, C=TR
+Serial number: 33a154b5
+Valid from: Wed Jun 02 18:58:13 WAT 2021 until: Fri May 09 18:58:13 WAT 2121
+Certificate fingerprints:
+         MD5:  36:29:5E:29:E8:CC:A5:B5:75:2D:6A:BA:D1:EC:38:1E
+         SHA1: B8:89:80:78:EE:11:1E:89:5A:41:D7:12:02:44:DD:F6:C4:6A:87:CD
+         SHA256: 64:1A:4E:CF:0D:19:9F:8F:EE:75:48:95:AD:33:AC:B9:33:CA:CF:E6:FA:
+FD:7E:89:05:75:11:E7:B7:5C:FF:09
+         Signature algorithm name: SHA256withRSA
+         Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: A4 1B 8B 5A 1E E3 E0 AA   C1 34 2A 68 92 AC AC 34  ...Z.....4*h...4
+0010: D6 44 C7 60                                        .D.`
+]
+]

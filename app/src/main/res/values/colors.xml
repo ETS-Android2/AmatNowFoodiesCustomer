@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <color name="colorPrimary">#E93821</color>
+    <color name="colorPrimaryDark">#E93821</color>
+    <color name="colorAccent">#E93821</color>
+    <color name="color_icon">#E93821</color>
+
+    <color name="transparent">@android:color/transparent</color>
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="bg_top_color">#ffffff</color>
+    <color name="bg_light_top_color">#000000</color>
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="color_light_black">#636262</color>
+    <color name="colorLightBG">#FFF5F5F5</color>
+    <color name="colorBg">#EBEBEB</color>
+
+    <color name="transparent_layout">#59000000</color>
+
+    <color name="colorEditTextBG">#D5D4D4</color>
+    <color name="colorDeal">#aaaaaa</color>
+
+    <color name="colorRed">#E93821</color>
+    <color name="trackColor">#83dc8585</color>
+    <color name="colorFB">#3b5998</color>
+    <color name="colorGoogle">#d34836</color>
+    <color name="colorRatingBar">#F7CA41</color>
+    <color name="colorOrName">#636262</color>
+    <color name="transparent_tint">#47000000</color>
+    <color name="light_blue">#01b6cb</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#d34836</color>
+    <color name="mtrl_textinput_hovered_box_stroke_color" tools:override="true">#d34836</color>
+
+
+    <color name="Theme3_colorPrimary">#fc4a1a</color>
+    <color name="Theme3_colorPrimaryDark">#f7b733</color>
+    <color name="Theme3_colorAccent">#f7b733</color>
+    <color name="Theme3_color_red">#F12727</color>
+    <color name="Theme3_textColorPrimary">#333333</color>
+    <color name="Theme3_textColorSecondary">#9D9D9D</color>
+
+    <color name="Theme3_app_background">#f8f8f8</color>
+    <color name="Theme3_view_color">#DADADA</color>
+
+    <color name="Theme3_white">#ffffff</color>
+
+    <color name="Theme3_icon_color">#747474</color>
+    <color name="Theme3_color_green">#8BC34A</color>
+    <color name="theme3_edit_background">#F5F4F4</color>
+    <color name="theme3_light_gray">#CECACA</color>
+    <color name="theme3_color_tint">#F4704C</color>
+
+    <color name="Theme4_textColorPrimary">#464545</color>
+    <color name="Theme4_textColorSecondary">#747474</color>
+
+    <color name="tb_colorPrimary">#7A6EE9</color>
+    <color name="tb_colorPrimaryDark">#7A6EE9</color>
+    <color name="tb_colorAccent">#7A6EE9</color>
+    <color name="tb_colorPrimary_light">#207A6EE9</color>
+    <color name="tb_textColorPrimary">#33323D</color>
+    <color name="tb_textColorSecondary">#65605A</color>
+    <color name="tb_textColorSecondaryLight">#B1B1B1</color>
+    <color name="tb_textColorBlueDark">#7D7C8C</color>
+
+    <color name="tb_textColorThird">#F0F0F0</color>
+    <color name="tb_Grey">#E6E7E9</color>
+    <color name="tb_white">#FFFFFF</color>
+    <color name="tb_layout_background_white">#F6F7FA</color>
+    <color name="tb_view_color">#B4BBC2</color>
+    <color name="tb_blue_color">#15A9EB</color>
+    <color name="tb_dark_blue_color">#3D5895</color>
+    <color name="tb_edit_text_color">#EFF3F6</color>
+    <color name="tb_menu_background">#8BFFFFFF</color>
+    <color name="tb_matt_black">#252321</color>
+    <color name="tb_offer_back1">#7E72EB</color>
+    <color name="tb_offer_back2">#FFC94E</color>
+    <color name="tb_mattal_black">#7c7b88</color>
+    <color name="tb_mattal_pink">#DF71EB</color>
+    <color name="tb_background_color">#F4F4FA</color>
+    <color name="tb_switch_on_color">#611AB7</color>
+    <color name="tb_light_gray">#F8F8F9</color>
+    <color name="error_red">#ED4337</color>
+    <color name="deep_red">#b3000e</color>
+
+    <!-- Authentication Screen -->
+    <color name="label_color">#6E7191</color>
+    <color name="label_focused">#D32F2F</color>
+    <color name="text_input_hint_color">#546E7A</color>
+    <color name="primary60">#E87E70</color>
+    <color name="primary80">#E85B48</color>
+    <color name="primary100">#E93821</color>
+
+    <!-- added just to test -->
+    <color name="db_colorPrimary">#008577</color>
+    <color name="db_colorPrimaryDark">#00574B</color>
+    <color name="db_colorAccent">#D81B60</color>
+
+    <!--Dashboard 1-->
+    <color name="db1_colorPrimary">#eb4b51</color>
+    <color name="db1_white">#ffffff</color>
+    <color name="db1_textColorPrimary">#212121</color>
+    <color name="db1_textColorSecondary">#757575</color>
+    <color name="db1_grey">#B9B9B9</color>
+    <color name="db1_yellow">#FBC02D</color>
+    <integer-array name="db2_category_colors">
+        <item>@color/db2_purple</item>
+        <item>@color/db2_green</item>
+        <item>@color/db2_orange</item>
+        <item>@color/db2_darkblue</item>
+        <item>@color/db2_darkpurple</item>
+        <item>@color/db2_darkgreen</item>
+    </integer-array>
+    <item name="db2_purple" type="color">#B88DDD</item>
+    <item name="db2_green" type="color">#C2DB77</item>
+    <item name="db2_orange" type="color">#F5D270</item>
+    <item name="db2_darkblue" type="color">#5FACC9</item>
+    <item name="db2_darkpurple" type="color">#B285CC</item>
+    <item name="db2_darkgreen" type="color">#B6DD6E</item>
+
+
+    <!--Dashboard 2-->
+    <color name="db2_colorPrimary">#FF7C6E</color>
+    <color name="db2_colorSecondary">#F5317F</color>
+    <color name="db2_textColorPrimary">#212121</color>
+    <color name="db2_textColorSecondary">#757575</color>
+    <color name="db2_white">#ffffff</color>
+    <color name="db2_black">#000000</color>
+
+    <!--Dashboard 3-->
+    <color name="db3_colorPrimary">#FF7C6E</color>
+    <color name="db3_colorSecondary">#F5317F</color>
+    <color name="db3_textColorPrimary">#212121</color>
+    <color name="db3_textColorSecondary">#757575</color>
+    <color name="db3_white">#ffffff</color>
+    <color name="db3_black">#000000</color>
+    <color name="db3_grey">#B9B9B9</color>
+    <color name="db3_white_trans">#F1F1F1</color>
+    <!--Dashboard 4-->
+    <color name="db4_colorPrimary">#130925</color>
+    <color name="db4_colorSecondary">#130925</color>
+    <color name="db4_textColorPrimary">#130925</color>
+    <color name="db4_textColorSecondary">#757575</color>
+    <color name="db4_white">#ffffff</color>
+    <color name="db4_black">#000000</color>
+    <color name="db4_grey">#B9B9B9</color>
+    <color name="db4_white_trans">#F1F1F1</color>
+    <color name="db4_cat_1">#45c7db</color>
+    <color name="db4_cat_2">#510AD7</color>
+    <color name="db4_cat_3">#e43649</color>
+    <color name="db4_cat_4">#f4b428</color>
+    <color name="db4_cat_5">#22ce9a</color>
+    <color name="db4_cat_6">#203afb</color>
+
+    <!--Dashboard 5-->
+    <color name="db5_colorPrimary">#2F95A1</color>
+    <color name="db5_colorSecondary">#2F95A1</color>
+    <color name="db5_textColorPrimary">#2F95A1</color>
+    <color name="db5_textColorSecondary">#757575</color>
+    <color name="db5_white">#ffffff</color>
+    <color name="db5_black">#000000</color>
+    <color name="db5_grey">#B9B9B9</color>
+    <color name="db5_viewColor">#EEEEF1</color>
+    <color name="db5_white_trans">#F1F1F1</color>
+    <color name="db5_hotel">#F0F5F7</color>
+    <color name="db5_flight">#FFF4F4</color>
+    <color name="db5_food">#FFF6F1</color>
+    <color name="db5_event">#F3F1FA</color>
+
+    <!--Dashboard 6-->
+    <color name="db6_colorPrimary">#0060D5</color>
+    <color name="db6_colorPrimaryDark">#0060D5</color>
+    <color name="db6_colorSecondary">#0c82DD</color>
+    <color name="db6_textColorPrimary">#0060D5</color>
+    <color name="db6_textColorSecondary">#757575</color>
+    <color name="db6_white">#ffffff</color>
+    <color name="db6_black">#000000</color>
+    <color name="db6_grey">#B9B9B9</color>
+    <color name="db6_viewColor">#EEEEF1</color>
+    <color name="db6_layout_background">#F6F7FA</color>
+    <color name="db6_white_trans">#F1F1F1</color>
+
+    <!--Dashboard 7-->
+    <color name="db7_colorPrimary">#19D077</color>
+    <color name="db7_colorPrimaryDark">#19D077</color>
+    <color name="db7_colorSecondary">#0c82DD</color>
+    <color name="db7_textColorPrimary">#130925</color>
+    <color name="db7_textColorSecondary">#757575</color>
+    <color name="db7_white">#FFFFFF</color>
+    <color name="db7_viewColor">#DADADA</color>
+    <color name="db7_layout_background">#F6F7FA</color>
+    <color name="db7_light_green">#E2F5E9</color>
+    <color name="db7_light_blue">#E9EAFF</color>
+    <color name="db7_dark_blue">#5B8CFF</color>
+    <color name="db7_dark_yellow">#FFAB35</color>
+    <color name="db7_dark_red">#FF7670</color>
+    <color name="db7_light_yellow">#FEF2E5</color>
+    <color name="db7_light_red">#FEE9EA</color>
+
+
+    <!--Dashboard 8-->
+    <color name="db8_colorPrimary">#AF9177</color>
+    <color name="db8_colorPrimaryDark">#B79A7F</color>
+    <color name="db8_colorSecondary">#0c82DD</color>
+    <color name="db8_textColorPrimary">#444444</color>
+    <color name="db8_textColorSecondary">#757575</color>
+    <color name="db8_white">#ffffff</color>
+    <color name="db8_black">#000000</color>
+    <color name="db8_grey">#F2F2F2</color>
+    <color name="db8_viewColor">#EEEEF1</color>
+    <color name="db8_layout_background">#F6F7FA</color>
+    <color name="grey">#efefef</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+</resources>

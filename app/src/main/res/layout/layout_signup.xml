@@ -1,226 +1,334 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Theme3_white"
-    android:fillViewport="true"
-    android:orientation="vertical"
-    android:scrollbars="none">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signup_root_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
 
-        <LinearLayout
-            android:id="@+id/verification_screen"
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:liftOnScroll="true"
+            app:liftOnScrollTargetViewId="@id/_nested_scroll_view">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/signupActivityToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorWhite"
+                android:elevation="@dimen/_1sdp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationContentDescription="@string/app_name"
+                app:navigationIcon="@drawable/ic_arrow_left"
+                app:popupTheme="@style/Theme3AppTheme.AppBarOverlay">
+
+                <com.foodies.amatfoodies.utils.CustomTextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/theme3_lbl_create_account"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/_nested_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="30dp"
-            android:visibility="gone"
-            app:layout_constraintDimensionRatio="H,0.55"
+            android:fillViewport="true"
+            android:overScrollMode="always"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <include
-                layout="@layout/verification_screen"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp">
 
-        </LinearLayout>
+                <com.foodies.amatfoodies.utils.FormLabelTextView
+                    android:id="@+id/nameLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_60sdp"
+                    android:labelFor="@id/emailAddressInput"
+                    android:text="@string/theme3_hint_Name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/_name_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/nameLabel">
 
-           <LinearLayout
-               android:id="@+id/sign_up_screen"
-               android:visibility="visible"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
+                    <com.foodies.amatfoodies.utils.TextFormFieldLayout
+                        android:id="@+id/nameInput"
+                        style="@style/TextFormFieldStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_38sdp">
 
-               <RelativeLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nameInputText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:inputType="text|textPersonName|textCapWords"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </com.foodies.amatfoodies.utils.TextFormFieldLayout>
+                </LinearLayout>
 
-                   <androidx.constraintlayout.widget.ConstraintLayout
-                       android:id="@+id/clMain"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content">
+                <com.foodies.amatfoodies.utils.FormLabelTextView
+                    android:id="@+id/emailAddressLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:labelFor="@id/emailAddressInput"
+                    android:text="@string/theme3_hint_Email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/_name_input_layout" />
 
-                       <ImageView
-                           android:id="@+id/back_icon"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="@dimen/toolbar_margin_left"
-                           android:background="@null"
-                           android:elevation="@dimen/_1sdp"
-                           android:paddingTop="5dp"
-                           android:paddingBottom="5dp"
-                           android:scaleType="fitStart"
-                           android:layout_marginTop="@dimen/_15sdp"
-                           android:src="@drawable/ic_baseline_arrow_back_ios_24"
-                           app:layout_constraintEnd_toEndOf="parent"
-                           app:layout_constraintHorizontal_bias="0.02"
-                           app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toTopOf="parent"
-                           app:layout_constraintVertical_bias="0.05" />
+                <LinearLayout
+                    android:id="@+id/_email_address_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emailAddressLabel">
 
-                       <ImageView
-                           android:layout_width="0dp"
-                           android:layout_height="0dp"
-                           android:scaleType="fitXY"
-                           android:src="@drawable/theme3_ic_background"
-                           app:layout_constraintDimensionRatio="H,0.55"
-                           app:layout_constraintEnd_toEndOf="parent"
-                           app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toTopOf="parent" />
-                   </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.foodies.amatfoodies.utils.TextFormFieldLayout
+                        android:id="@+id/emailAddressInput"
+                        style="@style/TextFormFieldStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_38sdp">
 
-                   <ImageView
-                       android:layout_width="@dimen/_50sdp"
-                       android:layout_height="@dimen/_50sdp"
-                       android:layout_below="@id/clMain"
-                       android:layout_alignParentEnd="true"
-                       android:layout_marginTop="@dimen/_minus35sdp"
-                       android:layout_marginEnd="@dimen/_40sdp"
-                       android:src="@mipmap/ic_launcher" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/emailAddressInputText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:inputType="textEmailAddress"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </com.foodies.amatfoodies.utils.TextFormFieldLayout>
+                </LinearLayout>
 
-                   <LinearLayout
-                       android:id="@+id/llMain"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="@dimen/Theme3_spacing_standard_new"
-                       android:layout_marginTop="@dimen/_60sdp"
-                       android:orientation="vertical">
+                <com.foodies.amatfoodies.utils.FormLabelTextView
+                    android:id="@+id/phoneLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:labelFor="@id/phoneInputText"
+                    android:text="@string/theme3_hint_Phone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/_email_address_input_layout" />
 
-                       <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:text="@string/theme3_lbl_create_account"
-                           android:textAppearance="@style/Theme3FontSemiBold"
-                           android:textColor="@color/Theme3_white"
-                           android:textSize="32sp" />
-                   </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/_phone_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/phoneLabel">
 
-               </RelativeLayout>
+                    <com.foodies.amatfoodies.utils.TextFormFieldLayout
+                        android:id="@+id/phoneInput"
+                        style="@style/TextFormFieldStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_38sdp">
 
-               <EditText
-                   android:id="@+id/ed_fname"
-                   style="@style/Theme3EditTextStyle_rounded"
-                   android:layout_marginTop="20dp"
-                   android:hint="@string/first_name"
-                   android:textColorHint="@color/dark_gray" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phoneInputText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:inputType="phone"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+                    </com.foodies.amatfoodies.utils.TextFormFieldLayout>
+                </LinearLayout>
 
-               <EditText
-                   android:id="@+id/ed_lname"
-                   style="@style/Theme3EditTextStyle_rounded"
-                   android:layout_marginTop="20dp"
-                   android:hint="Last Name"
-                   android:textColorHint="@color/dark_gray" />
+                <com.foodies.amatfoodies.utils.FormLabelTextView
+                    android:id="@+id/_password_label_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_weight="1"
+                    android:labelFor="@id/passwordInput"
+                    android:text="@string/password"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/_phone_input_layout" />
 
-               <EditText
-                   android:id="@+id/ed_email"
-                   style="@style/Theme3EditTextStyle_rounded"
-                   android:layout_marginTop="20dp"
-                   android:hint="@string/theme3_hint_Email"
-                   android:textColorHint="@color/dark_gray" />
+                <LinearLayout
+                    android:id="@+id/_password_input_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/_password_label_linear_layout">
 
-               <EditText
-                   android:id="@+id/ed_password"
-                   style="@style/Theme3EditTextStyle_rounded"
-                   android:layout_marginTop="20dp"
-                   android:hint="@string/theme3_hint_password"
-                   android:inputType="textPassword"
-                   android:textColorHint="@color/dark_gray" />
+                    <com.foodies.amatfoodies.utils.TextFormFieldLayout
+                        android:id="@+id/passwordInput"
+                        style="@style/TextFormFieldStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_38sdp"
+                        app:passwordToggleDrawable="@drawable/ic_eye"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/black">
 
-               <TextView
-                   android:id="@+id/btn_signup"
-                   style="@style/Theme3MaterialButton"
-                   android:layout_marginTop="20dp"
-                   android:elevation="@dimen/Theme3_spacing_middle"
-                   android:gravity="center_horizontal"
-                   android:shadowColor="@color/Theme3_colorPrimary"
-                   android:text="@string/theme3_lbl_sign_up"
-                   android:textAppearance="@style/Theme3FontSemiBold" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:inputType="textPassword"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </com.foodies.amatfoodies.utils.TextFormFieldLayout>
+                </LinearLayout>
 
-           </LinearLayout>
+                <com.foodies.amatfoodies.utils.FormLabelTextView
+                    android:id="@+id/_confirm_password_label_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_weight="1"
+                    android:labelFor="@id/confirmPasswordInput"
+                    android:text="@string/confirm_password"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/_password_input_linear_layout" />
 
-           <RelativeLayout
-               android:elevation="5dp"
-               android:id="@+id/transparent_layer"
-               android:layout_width="match_parent"
-               android:layout_height="750dp"
-               android:background="@color/transparent_tint"
-               android:visibility="visible" />
+                <LinearLayout
+                    android:id="@+id/_confirm_password_input_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/_confirm_password_label_linear_layout">
 
-           <RelativeLayout
-               android:id="@+id/progressDialog"
-               android:layout_width="80dp"
-               android:layout_height="80dp"
-               android:layout_centerInParent="true"
-               android:layout_gravity="center"
-               android:background="@drawable/round_shape_dialog_white"
-               android:elevation="30dp"
-               android:visibility="invisible"
-               app:layout_constraintDimensionRatio="H,0.55"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintVertical_bias="0.5">
+                    <com.foodies.amatfoodies.utils.TextFormFieldLayout
+                        android:id="@+id/confirmPasswordInput"
+                        style="@style/TextFormFieldStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_38sdp"
+                        app:passwordToggleDrawable="@drawable/ic_eye"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/black">
 
-               <com.gmail.samehadar.iosdialog.CamomileSpinner
-                   android:id="@+id/signUpProgress"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_centerInParent="true"
-                   app:clockwise="true"
-                   app:spinnerColor="@color/colorRed" />
-           </RelativeLayout>
-       </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/Theme3_spacing_standard_new"
-            android:layout_marginTop="@dimen/Theme3_spacing_standard_new"
-            android:layout_marginEnd="@dimen/Theme3_spacing_standard_new"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:gravity="bottom"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/Theme3_spacing_middle">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:inputType="textPassword"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </com.foodies.amatfoodies.utils.TextFormFieldLayout>
+                </LinearLayout>
 
-            <ImageView
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_marginTop="@dimen/Theme3_spacing_standard_new"
-                android:layout_marginBottom="@dimen/Theme3_spacing_middle"
-                android:layout_weight="1"
-                android:src="@drawable/theme3_ic_sign2" />
 
-            <ImageView
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:src="@drawable/theme3_ic_sign4" />
+                <com.foodies.amatfoodies.utils.FlatButton
+                    android:id="@+id/signup"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:text="@string/theme3_lbl_create_account"
+                    android:textAllCaps="false"
+                    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
+                    app:layout_constraintEnd_toEndOf="@id/_confirm_password_input_linear_layout"
+                    app:layout_constraintStart_toStartOf="@id/_confirm_password_input_linear_layout"
+                    app:layout_constraintTop_toBottomOf="@id/_confirm_password_input_linear_layout"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
 
-            <ImageView
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginBottom="@dimen/Theme3_spacing_large"
-                android:layout_weight="1"
-                android:src="@drawable/theme3_ic_sign3" />
+                <LinearLayout
+                    android:id="@+id/_or_txt_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/signup">
 
-            <ImageView
-                android:layout_width="@dimen/_55sdp"
-                android:layout_height="@dimen/_55sdp"
-                android:layout_marginStart="@dimen/_minus16sdp"
-                android:layout_marginTop="@dimen/Theme3_spacing_standard"
-                android:layout_weight="1"
-                android:src="@drawable/theme3_ic_sign1" />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+                    <com.foodies.amatfoodies.utils.DividerView
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/black" />
+
+                    <com.foodies.amatfoodies.utils.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="@dimen/_6sdp"
+                        android:text="@string/or_txt"
+                        android:textSize="17sp" />
+
+                    <com.foodies.amatfoodies.utils.DividerView
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/black" />
+                </LinearLayout>
+
+                <com.foodies.amatfoodies.utils.GoogleLoginButton
+                    android:id="@+id/googleSignIn"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_44sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cornerRadius="@dimen/_8sdp"
+                    app:iconPadding="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/_or_txt_id" />
+
+                <com.foodies.amatfoodies.utils.CustomTextView
+                    android:id="@+id/navigateToLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/googleSignIn" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/navigateToLogin" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

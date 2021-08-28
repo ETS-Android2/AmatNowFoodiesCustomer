@@ -1,13 +1,7 @@
 package com.foodies.amatfoodies.activitiesAndFragments;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -19,68 +13,42 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.foodies.amatfoodies.constants.ApiRequest;
-import com.foodies.amatfoodies.constants.Config;
+import com.foodies.amatfoodies.R;
+import com.foodies.amatfoodies.activities.BaseActivity;
 import com.foodies.amatfoodies.constants.DataParser;
 import com.foodies.amatfoodies.constants.FragmentCallback;
 import com.foodies.amatfoodies.constants.PreferenceClass;
-import com.foodies.amatfoodies.R;
 import com.foodies.amatfoodies.databinding.ActivityDeliveryBinding;
 import com.foodies.amatfoodies.models.AddressListModel;
 import com.foodies.amatfoodies.models.ModelDeliveryDetails;
-import com.foodies.amatfoodies.retrofit.client.Client;
-import com.foodies.amatfoodies.retrofit.endpoints.endpoint_request_list.apiDelivery;
-import com.foodies.amatfoodies.retrofit.endpoints.endpoint_request_list.body;
-import com.foodies.amatfoodies.retrofit.endpoints.endpoint_request_list.deliveryresponse;
-import com.foodies.amatfoodies.utils.CustomRequest;
-import com.foodies.amatfoodies.utils.cardstackview.internal.CardStackState;
 import com.foodies.amatfoodies.utils.slidinguppanel.SlidingUpPanelLayout;
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
-import com.google.maps.android.clustering.ClusterManager;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 public class DeliveryActivity extends AppCompatActivity {
     ActivityDeliveryBinding binding;
@@ -115,38 +83,36 @@ public class DeliveryActivity extends AppCompatActivity {
         AndroidNetworking.initialize(getApplicationContext());
 
         Places.initialize(getApplicationContext(), getApplication().getResources().getString(R.string.key_for_places));
-        try{
+        try {
             back = getIntent().getExtras().getString("back");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
         }
-        if (!back.equals("back")){
+        if (!back.equals("back")) {
             countDownTimer = new CountDownTimer(splashScreenTimer, timerInterval) {
                 @Override
                 public void onTick(long millisUntilFinished) {
 
                 }
+
                 @Override
                 public void onFinish() {
-                    if (isLoggedIn){
+                    if (isLoggedIn) {
                         binding.splashScreenRelLayout.setVisibility(GONE);
                         binding.drawerLayout.setVisibility(VISIBLE);
-                    }
-                    else{
+                    } else {
                         binding.loginContainer.setVisibility(VISIBLE);
                         Bundle bundle = new Bundle();
                         bundle.putString("forDelivery", "yes");
-                        Fragment restaurantMenuItemsFragment = new LoginAcitvity();
+                        Fragment restaurantMenuItemsFragment = new LoginActivity();
                         restaurantMenuItemsFragment.setArguments(bundle);
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.addToBackStack(null);
-                        transaction.add(R.id.login_container, restaurantMenuItemsFragment,"ParentFragment").commit();
+                        transaction.add(R.id.login_container, restaurantMenuItemsFragment, "ParentFragment").commit();
                     }
                 }
             }.start();
-        }
-        else{
+        } else {
             binding.splashScreenRelLayout.setVisibility(GONE);
             binding.drawerLayout.setVisibility(VISIBLE);
         }
@@ -165,7 +131,7 @@ public class DeliveryActivity extends AppCompatActivity {
                 binding.homeContent.ivMenu.setVisibility(VISIBLE);
                 binding.homeContent.llBottom.setVisibility(GONE);
                 run = () -> {
-                    if (!isSearchDone){
+                    if (!isSearchDone) {
                         ConstraintSet constraintSet = new ConstraintSet();
                         constraintSet.clone(binding.homeContent.constrainHome);
                         constraintSet.clear(
@@ -192,16 +158,13 @@ public class DeliveryActivity extends AppCompatActivity {
                 String whereTo = binding.homeContent.edtSourceLocation.getText().toString();
                 String destination = binding.homeContent.edtDestinationLocation.getText().toString();
                 delivery_time = binding.homeContent.pickUpTime.getText().toString();
-                if (!whereTo.isEmpty()&&!destination.isEmpty()&& !delivery_time.isEmpty()) {
+                if (!whereTo.isEmpty() && !destination.isEmpty() && !delivery_time.isEmpty()) {
                     sendDeliveryInfo(whereTo, address_id, delivery_time);
-                }
-                else if (whereTo.isEmpty()){
+                } else if (whereTo.isEmpty()) {
                     Toast.makeText(DeliveryActivity.this, "Please enter a pickup location", Toast.LENGTH_SHORT).show();
-                }
-                else if (destination.isEmpty()){
+                } else if (destination.isEmpty()) {
                     Toast.makeText(DeliveryActivity.this, "Please enter a destination", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(DeliveryActivity.this, "Please enter a location", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -210,10 +173,9 @@ public class DeliveryActivity extends AppCompatActivity {
         binding.confirmPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.instructions.getText().toString().isEmpty()){
+                if (binding.instructions.getText().toString().isEmpty()) {
                     Toast.makeText(DeliveryActivity.this, "Please Specify instructions upon delivery", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     instructions = binding.instructions.getText().toString();
                     startWebViewActivity();
                 }
@@ -269,17 +231,14 @@ public class DeliveryActivity extends AppCompatActivity {
                 String whereTo = binding.homeContent.edtSourceLocation.getText().toString();
                 String destination = binding.homeContent.edtDestinationLocation.getText().toString();
                 delivery_time = binding.homeContent.pickUpTime.getText().toString();
-                if (!whereTo.isEmpty()&&!destination.isEmpty()&!delivery_time.isEmpty()) {
+                if (!whereTo.isEmpty() && !destination.isEmpty() & !delivery_time.isEmpty()) {
                     Toast.makeText(DeliveryActivity.this, "Processing request, please wait", Toast.LENGTH_SHORT).show();
                     sendDeliveryInfo(whereTo, address_id, delivery_time);
-                }
-                else if (whereTo.isEmpty()){
+                } else if (whereTo.isEmpty()) {
                     Toast.makeText(DeliveryActivity.this, "Please enter a pickup location", Toast.LENGTH_SHORT).show();
-                }
-                else if (delivery_time.isEmpty()){
+                } else if (delivery_time.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please enter delivery date and time", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(DeliveryActivity.this, "Please enter a destination", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -287,36 +246,36 @@ public class DeliveryActivity extends AppCompatActivity {
     }
 
     AddressListModel addressListModel;
-    public void openAddressList(Boolean forPickUp){
+
+    public void openAddressList(Boolean forPickUp) {
         Fragment restaurantMenuItemsFragment = new AddressListFragment(new FragmentCallback() {
             @Override
             public void onResponce(Bundle bundle) {
-                if(bundle!=null){
-                    addressListModel=(AddressListModel)bundle.getSerializable("data");
+                if (bundle != null) {
+                    addressListModel = (AddressListModel) bundle.getSerializable("data");
 
-                    street =addressListModel.getStreet();
-                    city =addressListModel.getCity();
-                    state =addressListModel.getState();
-                    apartment =addressListModel.getApartment();
-                    addressId =addressListModel.getAddress_id();
-                    if (forPickUp){
-                        binding.homeContent.edtSourceLocation.setText(state+" , "+city+" , "+street + ", "+apartment);
-                    }
-                    else{
-                        binding.homeContent.edtDestinationLocation.setText(state+" , "+city+" , "+street + ", "+apartment);
+                    street = addressListModel.getStreet();
+                    city = addressListModel.getCity();
+                    state = addressListModel.getState();
+                    apartment = addressListModel.getApartment();
+                    addressId = addressListModel.getAddress_id();
+                    if (forPickUp) {
+                        binding.homeContent.edtSourceLocation.setText(state + " , " + city + " , " + street + ", " + apartment);
+                    } else {
+                        binding.homeContent.edtDestinationLocation.setText(state + " , " + city + " , " + street + ", " + apartment);
                         address_id = Integer.parseInt(addressId);
                     }
                 }
-                onAddress =false;
+                onAddress = false;
                 binding.addressListContainer.setVisibility(GONE);
             }
         });
 
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Bundle bundle=new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putString("grand_total", "0");
-        bundle.putString("rest_id","47");
+        bundle.putString("rest_id", "47");
         bundle.putString("forDelivery", "true");
         restaurantMenuItemsFragment.setArguments(bundle);
         transaction.addToBackStack(null);
@@ -325,6 +284,7 @@ public class DeliveryActivity extends AppCompatActivity {
 
     String time;
     String dateTime;
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void showDateAndTimeDialog() {
         Calendar calender = Calendar.getInstance();
@@ -337,7 +297,7 @@ public class DeliveryActivity extends AppCompatActivity {
             time = simpleDateFormat.format(calender.getTime());
             showTimeDialog();
         };
-        new DatePickerDialog(DeliveryActivity.this, dateSetListener, calender.get(Calendar.YEAR), calender.get(Calendar.MONTH),calender.get(Calendar.DAY_OF_MONTH)).show();
+        new DatePickerDialog(DeliveryActivity.this, dateSetListener, calender.get(Calendar.YEAR), calender.get(Calendar.MONTH), calender.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     private void showTimeDialog() {
@@ -349,7 +309,7 @@ public class DeliveryActivity extends AppCompatActivity {
                 calender.set(Calendar.MINUTE, i1);
 
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:MM");
-                dateTime = time + " "+simpleDateFormat.format(calender.getTime());
+                dateTime = time + " " + simpleDateFormat.format(calender.getTime());
                 binding.homeContent.pickUpTime.setText(dateTime);
             }
         };
@@ -359,19 +319,17 @@ public class DeliveryActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && resultCode == RESULT_OK){
+        if (requestCode == 101 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
             binding.homeContent.edtSourceLocation.setText(place.getAddress());
-        }
-        else if (requestCode == AutocompleteActivity.RESULT_ERROR){
+        } else if (requestCode == AutocompleteActivity.RESULT_ERROR) {
             Status status = Autocomplete.getStatusFromIntent(data);
             Toast.makeText(getApplicationContext(), status.getStatusMessage(), Toast.LENGTH_SHORT).show();
         }
-        if (requestCode == 102 && resultCode == RESULT_OK){
+        if (requestCode == 102 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
             binding.homeContent.edtDestinationLocation.setText(place.getAddress());
-        }
-        else if (requestCode == AutocompleteActivity.RESULT_ERROR){
+        } else if (requestCode == AutocompleteActivity.RESULT_ERROR) {
             Status status = Autocomplete.getStatusFromIntent(data);
             Toast.makeText(getApplicationContext(), status.getStatusMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -390,24 +348,21 @@ public class DeliveryActivity extends AppCompatActivity {
         i.putExtra("total", deliveryDetails.total);
         i.putExtra("instructions", instructions);
         i.putExtra("delivery_time", delivery_time);
-        if (binding.cardStripe.isChecked()){
+        if (binding.cardStripe.isChecked()) {
             i.putExtra("payment_method", 11);
-        }
-        else if (binding.cardOnDelivery.isChecked()){
+        } else if (binding.cardOnDelivery.isChecked()) {
             i.putExtra("payment_method", 4);
-        }
-        else if (binding.flutterwave.isChecked()){
+        } else if (binding.flutterwave.isChecked()) {
             i.putExtra("payment_method", 2);
-        }
-        else if (binding.cashOnDelivery.isChecked()){
+        } else if (binding.cashOnDelivery.isChecked()) {
             i.putExtra("payment_method", 3);
         }
         startActivity(i);
     }
 
-    private void sendDeliveryInfo(String from, int destination, String time){
-        String user_id = sharedPreferences.getString(PreferenceClass.pre_user_id,"");
-        String url = "https://amatnow.com/api_proxy_request_fm.php?customDelivery=true&fro="+from+"&to="+destination+"&user_id="+user_id;
+    private void sendDeliveryInfo(String from, int destination, String time) {
+        String user_id = sharedPreferences.getString(PreferenceClass.pre_user_id, "");
+        String url = "https://amatnow.com/api_proxy_request_fm.php?customDelivery=true&fro=" + from + "&to=" + destination + "&user_id=" + user_id;
         String finalUrl = url.replaceAll("\\s", "+");
         /*
         AndroidNetworking.get(url)
@@ -430,17 +385,16 @@ public class DeliveryActivity extends AppCompatActivity {
                 Request.Method.GET,
                 finalUrl,
                 response -> {
-                    try{
+                    try {
                         JSONObject jsonObject = new JSONObject(response.toString());
                         Boolean status = jsonObject.getBoolean("status");
-                        if(status){
+                        if (status) {
                             JSONObject obj = jsonObject.getJSONObject("msg");
-                            System.out.println("response" +obj);
+                            System.out.println("response" + obj);
                             deliveryDetails = DataParser.Pasrse_DeliveryDetails(obj);
                         }
                         setPaymentDetails();
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                     }
                 },
                 error -> Toast.makeText(DeliveryActivity.this, "Something went wrong. Please try again", Toast.LENGTH_SHORT).show()
@@ -448,8 +402,8 @@ public class DeliveryActivity extends AppCompatActivity {
         mRequestQueue.add(jsonObjReq);
     }
 
-    private void setPaymentDetails(){
-        String total = deliveryDetails.symbol +" "+   deliveryDetails.total;
+    private void setPaymentDetails() {
+        String total = deliveryDetails.symbol + " " + deliveryDetails.total;
         binding.Pickup.setText(deliveryDetails.pickUp);
         binding.delivery.setText(deliveryDetails.delivery);
         binding.distance.setText(deliveryDetails.distance);
@@ -487,18 +441,16 @@ public class DeliveryActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (onAddress){
+        if (onAddress) {
             binding.addressListContainer.setVisibility(GONE);
             onAddress = false;
         }
-        if (onPayment){
+        if (onPayment) {
             binding.paymentLayout.setVisibility(GONE);
             onPayment = false;
             onAddress = true;
-        }
-
-        else{
-            Intent i = new Intent(DeliveryActivity.this, MainActivity.class);
+        } else {
+            Intent i = new Intent(DeliveryActivity.this, BaseActivity.class);
             startActivity(i);
         }
     }

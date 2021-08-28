@@ -424,7 +424,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/favorites"
+                android:text="@string/favorites_txt"
                 android:id="@+id/favourite_tv"
                 android:textSize="12sp"
                 android:textStyle="normal"

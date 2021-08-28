@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import androidx.fragment.app.Fragment;
 
 import com.foodies.amatfoodies.R;
+import com.foodies.amatfoodies.activities.BaseActivity;
 import com.foodies.amatfoodies.constants.FragmentCallback;
 import com.foodies.amatfoodies.utils.relateToFragment_OnBack.RootFragment;
 
@@ -32,14 +33,16 @@ public class Checkout_F extends RootFragment {
 
     ProgressBar progressBar;
     WebView webView;
-    String url="www.google.com";
+    String url = "www.google.com";
+
     public Checkout_F() {
 
     }
 
     FragmentCallback fragment_callback;
+
     public Checkout_F(FragmentCallback fragment_callback) {
-        this.fragment_callback=fragment_callback;
+        this.fragment_callback = fragment_callback;
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -47,34 +50,34 @@ public class Checkout_F extends RootFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_checkout, container, false);
-        context=getContext();
+        view = inflater.inflate(R.layout.fragment_checkout, container, false);
+        context = getContext();
 
-        Bundle bundle=getArguments();
-        if(bundle!=null){
-            url=bundle.getString("url");
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            url = bundle.getString("url");
         }
 
 
         view.findViewById(R.id.back_icon).setOnClickListener(v -> getActivity().onBackPressed());
 
 
-        webView=view.findViewById(R.id.webview);
-        progressBar =view.findViewById(R.id.progress_bar);
+        webView = view.findViewById(R.id.webview);
+        progressBar = view.findViewById(R.id.progress_bar);
         webView.getSettings().setJavaScriptEnabled(true);
-      //  JavaInterface jsInterface = new JavaInterface(getActivity());
+        //  JavaInterface jsInterface = new JavaInterface(getActivity());
         webView.addJavascriptInterface(this, "OpenNewScreen");
 
-      //  webView.setInitialScale(1);
-      //  webView.getSettings().setLoadWithOverviewMode(true);
-      //  webView.getSettings().setUseWideViewPort(true);
-      //  webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-      //  webView.setScrollbarFadingEnabled(false);
+        //  webView.setInitialScale(1);
+        //  webView.getSettings().setLoadWithOverviewMode(true);
+        //  webView.getSettings().setUseWideViewPort(true);
+        //  webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        //  webView.setScrollbarFadingEnabled(false);
 
-        webView.setWebChromeClient(new WebChromeClient(){
+        webView.setWebChromeClient(new WebChromeClient() {
 
             public void onProgressChanged(WebView view, int progress) {
-                if(progress>=80){
+                if (progress >= 80) {
                     progressBar.setVisibility(View.GONE);
                 }
             }
@@ -88,7 +91,7 @@ public class Checkout_F extends RootFragment {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
                 view.loadUrl(url);
-                if(url.contains("paymentSuccess")){
+                if (url.contains("paymentSuccess")) {
                     startTimer();
                     System.out.println("payment success");
                 }
@@ -108,9 +111,10 @@ public class Checkout_F extends RootFragment {
 
     Handler max_handler;
     Runnable max_runable;
-    public void startTimer(){
-        max_handler=new Handler();
-        max_runable=new Runnable() {
+
+    public void startTimer() {
+        max_handler = new Handler();
+        max_runable = new Runnable() {
             @Override
             public void run() {
 
@@ -118,15 +122,15 @@ public class Checkout_F extends RootFragment {
 
             }
         };
-        max_handler.postDelayed(max_runable,10000);
+        max_handler.postDelayed(max_runable, 10000);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        if(max_handler!=null && max_runable!=null){
+        if (max_handler != null && max_runable != null) {
 
-            if(fragment_callback!=null)
+            if (fragment_callback != null)
                 fragment_callback.onResponce(new Bundle());
 
             max_handler.removeCallbacks(max_runable);
@@ -135,8 +139,8 @@ public class Checkout_F extends RootFragment {
     }
 
     @JavascriptInterface
-    public void gotoHomePage(){
-        startActivity(new Intent(getContext(), MainActivity.class));
+    public void gotoHomePage() {
+        startActivity(new Intent(getContext(), BaseActivity.class));
     }
 
 }
