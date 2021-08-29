@@ -8,7 +8,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.foodies.amatfoodies.R
@@ -21,7 +20,6 @@ import java.util.*
 class BaseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBaseBinding
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     private lateinit var context: Context
 
@@ -52,16 +50,6 @@ class BaseActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
-
-        val drawerLayout = binding.drawerLayout
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.sideMenuHome, R.id.sideMenuExplore, R.id.sideMenuAccount),
-            drawerLayout,
-        )
-
-        binding.sideNavigationView.setupWithNavController(navController)
-
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -69,7 +57,4 @@ class BaseActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.baseActivityNavHost).navigateUp(appBarConfiguration)
-    }
 }

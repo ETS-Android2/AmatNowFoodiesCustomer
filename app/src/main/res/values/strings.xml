@@ -721,9 +721,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem 
         "when a user tries to pick up one of cards.\n\n"
     </string>
 
+    <!-- New string -->
     <string name="home_nav_text">Home</string>
     <string name="explore_nav_text">Explore</string>
     <string name="favorites_txt">Favorites</string>
     <string name="cart_nav_text">Cart</string>
     <string name="profile_nav_text">Profile</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Closed</string>
 </resources>
