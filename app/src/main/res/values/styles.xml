@@ -487,9 +487,9 @@
     </style>
 
     <style name="MaterialAppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/db_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/db_colorPrimaryDark</item>
-        <item name="colorAccent">@color/tb_colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
         <item name="searchViewStyle">@style/SearchViewMy</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorBlack</item>
