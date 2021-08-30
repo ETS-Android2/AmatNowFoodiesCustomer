@@ -1,42 +1,49 @@
-package com.foodies.amatfoodies.constants;
+package com.foodies.amatfoodies.constants
 
-import android.os.Environment;
-
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import android.os.Environment
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by foodies on 10/18/2019.
  */
+object AllConstants {
+    var width = 0
 
-public class AllConstants {
-    public static int width=0;
-    public static int height=0;
+    @JvmField
+    var height = 0
 
-    public static String verdana = "verdana.ttf";
-    public static String arial = "arial.ttf";
+    @JvmField
+    var verdana = "verdana.ttf"
+    var arial = "arial.ttf"
+    const val CALCULATION = "CalculationAndroid"
+    const val TRACKING = "tracking"
+    const val tag = "foodies_customer"
 
-    public static final String CALCULATION = "CalculationAndroid";
-    public static final String TRACKING = "tracking";
+    @JvmField
+    var folder_parcel = Environment.getExternalStorageDirectory().toString() + "/Foodies/"
 
-    public final static String tag="foodies_customer";
+    @JvmField
+    var folder_parcel_DCIM = Environment.getExternalStorageDirectory().toString() + "/DCIM/Foodies/"
 
-    public static String folder_parcel = Environment.getExternalStorageDirectory() +"/Foodies/";
-    public static String folder_parcel_DCIM = Environment.getExternalStorageDirectory() +"/DCIM/Foodies/";
-    public static SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ssZZ",Locale.getDefault());
-    public static SimpleDateFormat df2 = new SimpleDateFormat("dd-MM-yyyy HH:mmZZ",Locale.getDefault());
+    @JvmField
+    var df = SimpleDateFormat("dd-MM-yyyy HH:mm:ssZZ", Locale.getDefault())
 
-    public static final int permission_location=790;
-    public static final int permission_camera_code=786;
-    public static final int permission_write_data=788;
-    public static final int permission_Read_data=789;
-    public static final int permission_Recording_audio=790;
-    public static final int Request_code_Location=800;
-    public static final boolean IsToastShow=true;
+    @JvmField
+    var df2 = SimpleDateFormat("dd-MM-yyyy HH:mmZZ", Locale.getDefault())
+    const val permission_location = 790
+    const val permission_camera_code = 786
+    const val permission_write_data = 788
+    const val permission_Read_data = 789
+    const val permission_Recording_audio = 790
+    const val Request_code_Location = 800
+    const val IsToastShow = true
+    const val ISShowAd = true
+    const val max_zoom = 15
 
-    public static final boolean ISShowAd=true;
-
-    public static final int max_zoom=15;
-
-    public static String Opened_Chat_id="";
+    @JvmField
+    var Opened_Chat_id = ""
+    const val ANONYMOUS_USER_URL = "https://firebasestorage.googleapis.com/v0/b/" +
+            "brendan-portfolio.appspot.com/o/misc%2Funnamed.png" +
+            "?alt=media&token=777f8472-69a0-40be-aaea-bf3e85c34afd"
 }

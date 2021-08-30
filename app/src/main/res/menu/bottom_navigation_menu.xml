@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home_nav"
         android:orderInCategory="100"
-        android:title="@string/home_nav_text" />
+        android:title="@string/home_nav_text"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/exploreFragment"
         android:icon="@drawable/ic_explore_nav"
         android:orderInCategory="200"
-        android:title="@string/explore_nav_text" />
+        android:title="@string/explore_nav_text"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/ic_favorite_nav"
         android:orderInCategory="300"
-        android:title="@string/favorites_txt" />
+        android:title="@string/favorites_txt"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/cartFragment"
         android:icon="@drawable/ic_shopping_cart_nav"
         android:orderInCategory="400"
-        android:title="@string/cart_nav_text" />
+        android:title="@string/cart_nav_text"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/accountFragment"
         android:icon="@drawable/ic_acc_fil"
+        android:iconTint="@color/transparent"
+        android:iconTintMode="src_atop"
         android:orderInCategory="500"
-        android:title="@string/profile_nav_text" />
+        android:title="@string/profile_nav_text"
+        app:showAsAction="ifRoom|withText"
+        tools:targetApi="o" />
 </menu>

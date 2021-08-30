@@ -2,10 +2,12 @@ package com.foodies.amatfoodies.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.format.Time
@@ -15,6 +17,8 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
 import java.net.URL
 import java.util.*
@@ -112,13 +116,13 @@ object ProjectUtils {
 
     @JvmOverloads
     @JvmStatic
-    fun log(msg: String?, tr: Throwable? = null) = log(TAG, msg, tr)
+    fun logger(msg: String?, tr: Throwable? = null) = logger(TAG, msg, tr)
 
     @JvmStatic
-    fun log(tag: String?, msg: String?) = log(tag, msg, null)
+    fun logger(tag: String?, msg: String?) = logger(tag, msg, null)
 
     @JvmStatic
-    fun log(tag: String?, msg: String?, tr: Throwable? = null) = Log.wtf(tag, msg, tr)
+    fun logger(tag: String?, msg: String?, tr: Throwable? = null) = Log.wtf(tag, msg, tr)
 
     /**
      * Returns the current time in milliseconds
@@ -129,6 +133,18 @@ object ProjectUtils {
         time.setToNow()
         return time.toMillis(false)
     }
+
+    fun withColorDrawable(context: Context, @ColorRes id: Int): ColorDrawable =
+        ColorDrawable(withColor(context, id))
+
+    fun withDrawable(context: Context, @DrawableRes id: Int): Drawable? =
+        ResourcesCompat.getDrawable(context.resources, id, context.theme)
+
+    fun withColor(context: Context, @ColorRes id: Int): Int =
+        ResourcesCompat.getColor(context.resources, id, context.theme)
+
+    fun withColorStateList(context: Context, @ColorRes id: Int): ColorStateList? =
+        ResourcesCompat.getColorStateList(context.resources, id, context.theme)
 }
 
 private fun CharSequence?.capitalizeAllFirstInWord(): String {

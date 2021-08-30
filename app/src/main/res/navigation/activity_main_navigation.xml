@@ -8,31 +8,33 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.foodies.amatfoodies.fragments.HomeFragment"
-        android:label="@string/home_nav_text"
+        android:label=""
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/exploreFragment"
         android:name="com.foodies.amatfoodies.fragments.ExploreFragment"
-        android:label="@string/explore_nav_text"
+        android:label=""
         tools:layout="@layout/fragment_explore" />
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.foodies.amatfoodies.fragments.FavoriteFragment"
-        android:label="@string/favorites_txt"
+        android:label=""
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.foodies.amatfoodies.fragments.CartFragment"
-        android:label="@string/cart_nav_text" />
+        android:label=""
+        tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.foodies.amatfoodies.fragments.AccountFragment"
-        android:label="@string/profile_nav_text"
+        android:label=""
         tools:layout="@layout/fragment_account" />
 
     <fragment
         android:id="@+id/sideMenuHome"
-        android:name="com.foodies.amatfoodies.fragments.HomeFragment" >
+        android:name="com.foodies.amatfoodies.fragments.HomeFragment"
+        android:label="">
         <action
             android:id="@+id/action_sideMenuHome_to_cartFragment"
             app:destination="@id/cartFragment" />
@@ -40,7 +42,8 @@
 
     <fragment
         android:id="@+id/sideMenuExplore"
-        android:name="com.foodies.amatfoodies.fragments.ExploreFragment" >
+        android:name="com.foodies.amatfoodies.fragments.ExploreFragment"
+        android:label="">
         <action
             android:id="@+id/action_sideMenuExplore_to_exploreFragment"
             app:destination="@id/exploreFragment" />
@@ -48,7 +51,8 @@
 
     <fragment
         android:id="@+id/sideMenuAccount"
-        android:name="com.foodies.amatfoodies.fragments.AccountFragment" >
+        android:name="com.foodies.amatfoodies.fragments.AccountFragment"
+        android:label="">
         <action
             android:id="@+id/action_sideMenuAccount_to_accountFragment"
             app:destination="@id/accountFragment" />
