@@ -131,19 +131,10 @@ class BaseActivity : AppCompatActivity() {
                         setIconTint(R.id.cartFragment)
                     }
                     R.id.accountFragment -> {
-                        setIconTint(R.id.accountFragment)
+                        bottomNavView.itemIconTintList = null
                         val item = bottomNavView.menu.findItem(R.id.accountFragment)
                         MenuItemCompat.setIconTintList(item, null)
                         MenuItemCompat.setIconTintMode(item, null)
-                        bottomNavView.itemIconTintList = ColorStateList(
-                            arrayOf(
-                                intArrayOf(-android.R.attr.state_selected),
-                                intArrayOf(android.R.attr.state_selected),
-                            ), intArrayOf(
-                                withColor(context, R.color.quantum_grey600),
-                                withColor(context, R.color.transparent),
-                            )
-                        )
                     }
                     R.id.sideMenuHome -> {
                         controller.navigate(
@@ -223,7 +214,7 @@ class BaseActivity : AppCompatActivity() {
                 intArrayOf(-android.R.attr.state_selected),
                 intArrayOf(android.R.attr.state_selected),
             ), intArrayOf(
-                withColor(context, R.color.quantum_grey600),
+                withColor(context, R.color.quantum_grey400),
                 withColor(context, R.color.primary100),
             )
         )
